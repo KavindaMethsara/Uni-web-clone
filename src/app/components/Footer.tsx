@@ -23,7 +23,7 @@ const Footer = () => {
             <h2 className="mb-4 ml-4">Non-Discrimination</h2>
             <h2 className="mb-4 ml-4">Accessibility</h2>
           </div>
-          <div className='flex  -mt-4 text-base'>
+          <div className='flex -mt-4 text-base'>
             <p>&copy; {new Date().getFullYear()} Stanford University</p>
           </div>
         </div>
