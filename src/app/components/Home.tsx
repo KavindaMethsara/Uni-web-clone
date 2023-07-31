@@ -16,20 +16,14 @@ const NavLink = ({ href, children }: NavLinkProps) => {
       onMouseLeave={() => setShowLine(false)}
     >
       {children}
-      <span className={`absolute w-full h-1 bg-white bottom-0 left-0 transform scale-x-0 transition-transform duration-300 ${showLine ? 'scale-x-100' : ''}`}></span>
+      <span className={`absolute w-full h-1 bg-white top-9 left-0 transform scale-x-0  transition-all duration-300 z-10 ${showLine ? 'scale-x-100' : ''}`}></span>
     </a>
   );
 };
 
-const Home = ({ fixedNavbar }: { fixedNavbar: boolean }) => {
+const Home = () => {
   return (
-    <div
-    className={`bg-cover bg-center min-h-screen ${
-      fixedNavbar ? 'text-white' : 'text-black' // Change the text color when navbar is fixed
-    }`}
-    style={{ backgroundImage: "url('/University01.jpg')" }}
-  >
-    <div className="bg-cover bg-center min-h-screen " style={{ backgroundImage: "url('/University01.jpg')" }}>
+    <div className="bg-cover bg-center min-h-screen" style={{ backgroundImage: "url('/University02.jpg')" }}>
       <div className="flex flex-row h-4 p-16 gap-4 fixed w-full justify-center">
         <NavLink href="/login">News</NavLink>
         <NavLink href="/new_2">Events</NavLink>
@@ -39,7 +33,6 @@ const Home = ({ fixedNavbar }: { fixedNavbar: boolean }) => {
         <NavLink href="/new_6">Campus Life</NavLink>
         <NavLink href="/new_7">Admission</NavLink>
         <NavLink href="/New/About">About</NavLink>
-      </div>
       </div>
       </div>
   );

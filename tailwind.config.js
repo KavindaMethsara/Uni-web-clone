@@ -11,15 +11,11 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          colors: {
+            transparent: 'transparent',
+            primary: '#00aaff', // Replace this with the color you want
+          },
       },
-    },
-    purge: [],
-    darkMode: false, // or 'media' or 'class'
-    theme: {
-      extend: {},
-    },
-    variants: {
-      extend: {},
     },
   },
   plugins: [],

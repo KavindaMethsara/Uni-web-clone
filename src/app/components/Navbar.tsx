@@ -1,13 +1,14 @@
 'use client';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 interface NavLinkProps {
   href: string;
-  text: ReactNode;
+  text: React.ReactNode;
+  isScrolled: boolean;
 }
 
-const NavLink = ({ href, text }: NavLinkProps) => {
+const NavLink = ({ href, text, isScrolled }: NavLinkProps) => {
   const [showLine, setShowLine] = useState(false);
 
   return (
@@ -18,45 +19,49 @@ const NavLink = ({ href, text }: NavLinkProps) => {
       onMouseLeave={() => setShowLine(false)}
     >
       {text}
-      <span className={`absolute w-full h-1 top-0 left-0 transform origin-left transition-transform duration-300 ${
-          showLine ? 'scale-x-100' : 'scale-x-0'
-        }`}
-      />
+      <span className={`absolute mb-20 w-full h-1 bg-white top-0 left-0 transform scale-x-0 transition-all duration-300 ${showLine? 'scale-x-100' : ''}`}></span>
     </a>
   );
-  
 };
 
-interface NavbarProps {
-  fixed?: boolean;
-  fitsScreen?: boolean;
-}
+const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 0) {
+          setScrolled(true);
+        } else {
+          setScrolled(false);
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
 
-const Navbar = ({ fixed, fitsScreen }: NavbarProps) => {
   return (
     <div>
-      <nav
-        className={`flex h-10 p-7 items-center justify-between fixed w-full z-10 ${
-          fixed && !fitsScreen ? 'bg-transparent text-white' : 'bg-transparent text-white'
-        }`}
-      >
-        <a href="/" className={`link ${fixed && !fitsScreen ? 'text-white' : 'text-white'}`}>
-          <h1 className="text-xl sm:text-2xl text-left cursor-pointer">
+      <nav className={`p-1 bg-transparent flex items-center justify-between fixed top-0 w-full z-10 ${scrolled ? 'bg-red-700' : 'bg-transparent'}`}>
+        <a href="/" className="link">
+          <h1 className="text-xl sm:text-2xl p-4 text-left cursor-pointer text-white">
             Stanford University
           </h1>
         </a>
-        <div className="flex gap-4 items-center ">
+        <div className="flex items-center gap-4">
           <div>
             <h2>Information for:</h2>
           </div>
-          <NavLink href="/" text="Students" />
-          <NavLink href="/" text="Faculty & Staff" />
-          <NavLink href="/" text="Families" />
-          <NavLink href="/" text="Visitors" />
-          <NavLink href="/" text="Alumni" />
+          <NavLink href="/Students" text="Students" isScrolled={false} />
+          <NavLink href="/Faculty" text="Faculty & Staff" isScrolled={false} />
+          <NavLink href="/Families" text="Families" isScrolled={false} />
+          <NavLink href="/Visitors" text="Visitors" isScrolled={false} />
+          <NavLink href="/Alumni" text="Alumni" isScrolled={false} />
           <div className="flex items-center gap-4 hover:bg-red-700 p-2 cursor-pointer">
-            <FaSearch className={`text-${fixed && !fitsScreen ? 'white' : 'white'}`} />
-            <h3 className={`text-sm sm:text-base ${fixed && !fitsScreen ? 'text-white' : 'text-white'} font-semibold`}>Search</h3>
+            <FaSearch className="text-white" />
+            <h3 className="text-sm sm:text-base text-white font-semibold">Search</h3>
           </div>
         </div>
       </nav>
@@ -64,7 +69,4 @@ const Navbar = ({ fixed, fitsScreen }: NavbarProps) => {
   );
 };
 
-
 export default Navbar;
-
-

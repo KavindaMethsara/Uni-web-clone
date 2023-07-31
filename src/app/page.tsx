@@ -1,50 +1,22 @@
 'use client';
 import React, { useRef, useEffect, useState } from 'react';
-import navbar from '../app/components/Navbar';
-import home from '../app/components/Home';
-import Section from '../app/components/Section01';
-import Navbar from '../app/components/Navbar';
-import Home from '../app/components/Home';
-import Section01 from '../app/components/Section01';
-import Section02 from './components/Section02';
-import Section03 from './components/Section03';
-import Section04 from './components/Section04';
-import Section05 from './components/Section05';
-import Section06 from './components/Section06';
-import Section07 from './components/Section07';
-import Section08 from './components/Section08';
-import Section09 from './components/Section09';
+import Navbar from '../app/components/Navbar'; // Check the relative path
+import Home from '../app/components/Home'; // Check the relative path
+import Section01 from '../app/components/Section01'; // Check the relative path
+import Section02 from '../app/components/Section02'; // Check the relative path
+import Section03 from '../app/components/Section03'; // Check the relative path
+import Section04 from '../app/components/Section04'; // Check the relative path
+import Section05 from '../app/components/Section05'; // Check the relative path
+import Section06 from '../app/components/Section06'; // Check the relative path
+import Section07 from '../app/components/Section07'; // Check the relative path
+import Section08 from '../app/components/Section08'; // Check the relative path
+import Section09 from '../app/components/Section09'; // Check the relative path
+import Section10 from './components/Section10';
 
 const Page = () => {
-  const sectionRef = useRef(null);
-  const [showSection, setShowSection] = useState(false);
-  const [fitsScreen, setFitsScreen] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const { y } = sectionRef.current?.getBoundingClientRect() || { y: 0 };
-      setShowSection(y <= 0);
-    };
-
-    const handleResize = () => {
-      setFitsScreen(window.innerHeight >= document.documentElement.scrollHeight);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-
-    // Call handleResize initially to set the initial state
-    handleResize();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <div>
-      <Navbar fixed={showSection} fitsScreen={fitsScreen} />
+      <Navbar />
       <Section01 />
       <Section02 />
       <Section03 />
@@ -54,7 +26,8 @@ const Page = () => {
       <Section07 />
       <Section08 />
       <Section09 />
-      <div ref={sectionRef} />
+      <Section10/>
+      <div/>
     </div>
   );
 };
