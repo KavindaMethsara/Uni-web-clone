@@ -21,10 +21,16 @@ const NavLink = ({ href, children }: NavLinkProps) => {
   );
 };
 
-const Home = () => {
+const Home = ({ fixedNavbar }: { fixedNavbar: boolean }) => {
   return (
-    <div className="bg-cover bg-center min-h-screen" style={{ backgroundImage: "url('/University01.jpg')" }}>
-      <div className="flex flex-row gap-4 justify-center items-center">
+    <div
+    className={`bg-cover bg-center min-h-screen ${
+      fixedNavbar ? 'text-white' : 'text-black' // Change the text color when navbar is fixed
+    }`}
+    style={{ backgroundImage: "url('/University01.jpg')" }}
+  >
+    <div className="bg-cover bg-center min-h-screen " style={{ backgroundImage: "url('/University01.jpg')" }}>
+      <div className="flex flex-row h-4 p-16 gap-4 fixed w-full justify-center">
         <NavLink href="/login">News</NavLink>
         <NavLink href="/new_2">Events</NavLink>
         <NavLink href="/new_3">Academics</NavLink>
@@ -34,7 +40,8 @@ const Home = () => {
         <NavLink href="/new_7">Admission</NavLink>
         <NavLink href="/New/About">About</NavLink>
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 
