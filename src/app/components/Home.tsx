@@ -24,6 +24,9 @@ const NavLink = ({ href, children }: NavLinkProps) => {
 const Home = () => {
   return (
     <div className="bg-cover bg-center min-h-screen" style={{ backgroundImage: "url('/University02.jpg')" }}>
+      <div className="absolute top-0 left-0 right-0 bottom-12 flex items-center justify-center">
+        <p className="text-white text-9xl font-semibold font-sans">Stanford</p>
+      </div>
       <div className="flex flex-row h-4 p-16 gap-4 fixed w-full justify-center">
         <NavLink href="/login">News</NavLink>
         <NavLink href="/new_2">Events</NavLink>
