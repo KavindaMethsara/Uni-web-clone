@@ -12,6 +12,7 @@ import Section07 from '../app/components/Section07'; // Check the relative path
 import Section08 from '../app/components/Section08'; // Check the relative path
 import Section09 from '../app/components/Section09'; // Check the relative path
 import Section10 from './components/Section10';
+import Section11 from './components/Section11';
 
 const Page = () => {
   return (
@@ -26,7 +27,8 @@ const Page = () => {
       <Section07 />
       <Section08 />
       <Section09 />
-      <Section10/>
+      <Section10 />
+      <Section11 />
       <div/>
     </div>
   );

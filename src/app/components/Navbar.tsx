@@ -44,9 +44,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className={`p-1 bg-transparent flex items-center justify-between fixed top-0 w-full z-10 ${scrolled ? 'bg-red-700' : 'bg-transparent'}`}>
+      <nav className={`p-1 bg-transparent flex justify-between fixed top-0 w-full z-10 ${scrolled ? 'bg-red-700' : 'bg-transparent'}`}>
         <a href="/" className="link">
-          <h1 className="text-xl sm:text-2xl p-4 text-left cursor-pointer text-white">
+          <h1 className="text-xl sm:text-2xl p-4 cursor-pointer text-white">
             Stanford University
           </h1>
         </a>
