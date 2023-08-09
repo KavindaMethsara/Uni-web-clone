@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className='p-1 lg:bg-transparent flex justify-between fixed top-0 w-full z-10 sm:bg-red-700'>
+      <nav className='lg:bg-transparent h-16 flex justify-between fixed top-0 w-full z-10 sm:bg-red-700'>
         <div className="flex items-center gap-4">
           <a href="/" className="link">
             <h1 className={`text-xl sm:text-2xl p-4 cursor-pointer text-white ${isSmallScreen ? 'text-lg' : ''}`}>
