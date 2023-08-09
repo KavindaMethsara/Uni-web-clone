@@ -1,6 +1,7 @@
 'use client';
 import React, { ReactNode, useState, useEffect } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaBars, FaSearch } from 'react-icons/fa';
+import { useMediaQuery } from 'react-responsive';
 
 interface NavLinkProps {
   href: string;
@@ -25,31 +26,27 @@ const NavLink = ({ href, text, isScrolled }: NavLinkProps) => {
 };
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 0) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
-        }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
+  const isSmallScreen = useMediaQuery({ maxWidth: 1024 }); // Adjust the max width as needed
 
   return (
     <div>
-      <nav className={`p-1 bg-transparent flex justify-between fixed top-0 w-full z-10 ${scrolled ? 'bg-red-700' : 'bg-transparent'}`}>
-        <a href="/" className="link">
-          <h1 className="text-xl sm:text-2xl p-4 cursor-pointer text-white">
-            Stanford University
-          </h1>
-        </a>
+      <nav className='p-1 lg:bg-transparent flex justify-between fixed top-0 w-full z-10 sm:bg-red-700'>
+        <div className="flex items-center gap-4">
+          <a href="/" className="link">
+            <h1 className={`text-xl sm:text-2xl p-4 cursor-pointer text-white ${isSmallScreen ? 'text-lg' : ''}`}>
+              <span className={isSmallScreen ? 'flex items-center gap-4' : ''}>
+                <span>Stanford</span>
+                {isSmallScreen && (
+                  <div className="flex items-center gap-4 hover:bg-red-700 p-2 cursor-pointer">
+                    <FaSearch className="text-white" />
+                    <h3 className="text-sm sm:text-base text-white font-semibold">Search</h3>
+                  </div>
+                )}
+              </span>
+              {!isSmallScreen && ' University'}
+            </h1>
+          </a>
+        </div>
         <div className="flex items-center gap-4">
           <div>
             <h2>Information for:</h2>
